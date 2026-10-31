@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>安装灵猫 2.0（苹果版）</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Microsoft YaHei", sans-serif;
+        color: #172033;
+        background: #f6f8fb;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        padding: max(32px, env(safe-area-inset-top)) 20px max(28px, env(safe-area-inset-bottom));
+        display: grid;
+        place-items: center;
+        background: #f6f8fb;
+      }
+
+      main {
+        width: min(100%, 420px);
+        padding: 34px 28px 28px;
+        background: #ffffff;
+        border: 1px solid #e6eaf0;
+        border-radius: 8px;
+        box-shadow: 0 16px 48px rgba(25, 55, 95, 0.08);
+      }
+
+      .app-head { text-align: center; }
+
+      .app-icon {
+        width: 82px;
+        height: 82px;
+        display: block;
+        margin: 0 auto 18px;
+        border-radius: 18px;
+        box-shadow: 0 10px 24px rgba(31, 101, 214, 0.15);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 25px;
+        line-height: 1.35;
+        letter-spacing: 0;
+      }
+
+      .version {
+        margin: 8px 0 0;
+        color: #657086;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .install-button {
+        width: 100%;
+        min-height: 52px;
+        margin-top: 28px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        background: #1f65d6;
+        color: #ffffff;
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: 0;
+        text-decoration: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .install-button:active { background: #1856ba; }
+
+      .steps {
+        margin: 28px 0 0;
+        padding: 24px 0 0;
+        display: grid;
+        gap: 15px;
+        border-top: 1px solid #edf0f4;
+      }
+
+      .step {
+        min-height: 28px;
+        display: grid;
+        grid-template-columns: 26px minmax(0, 1fr);
+        gap: 12px;
+        align-items: start;
+        color: #4d596e;
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .step-number {
+        width: 26px;
+        height: 26px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #eef4ff;
+        color: #1f65d6;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .note {
+        margin: 22px 0 0;
+        color: #8a94a6;
+        font-size: 12px;
+        line-height: 1.6;
+        text-align: center;
+      }
+
+      @media (max-width: 420px) {
+        body { padding-inline: 14px; }
+        main { padding: 30px 22px 24px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header class="app-head">
+        <img class="app-icon" src="./icon512.png" alt="灵猫 2.0 图标" width="82" height="82" />
+        <h1>灵猫 2.0（苹果版）</h1>
+        <p class="version">版本 2.0.21 · 构建 2221</p>
+      </header>
+
+      <a class="install-button" href="itms-services://?action=download-manifest&amp;url=https://yuanyuanlinmo.github.io/lingmao-ios/c0fb87cadbb20ab4/manifest.plist">安装</a>
+
+      <div class="steps" role="list" aria-label="安装步骤">
+        <div class="step" role="listitem"><span class="step-number" aria-hidden="true">1</span><span>请用 iPhone 自带的 Safari 打开本页。</span></div>
+        <div class="step" role="listitem"><span class="step-number" aria-hidden="true">2</span><span>点击“安装”，确认后回到桌面等待安装完成。</span></div>
+        <div class="step" role="listitem"><span class="step-number" aria-hidden="true">3</span><span>新版会覆盖原来的“灵猫 2.0”，不用先删除旧版。</span></div>
+      </div>
+
+      <p class="note">仅已登记的 iPhone 可以安装此版本。</p>
+    </main>
+  </body>
+</html>
