@@ -166,14 +166,14 @@
 
       <p class="notice" id="browserNotice" role="status" hidden></p>
 
-      <a class="button button-primary" id="installButton" href="../latest/">打开最新版并添加到桌面</a>
-      <a class="button button-secondary" href="./lingmao-2.0.21.mobileconfig">使用描述文件安装</a>
+      <a class="button button-primary" id="installButton" href="../latest/">打开最新版并添加到主屏幕</a>
+      <a class="button button-secondary" id="profileButton" href="./lingmao-2.0.21.mobileconfig">备用：下载描述文件</a>
       <p class="status" id="installStatus" aria-live="polite"></p>
 
       <div class="steps" role="list" aria-label="安装步骤">
-        <div class="step" role="listitem"><span class="step-number" aria-hidden="true">1</span><span>使用 iPhone 自带的 Safari 打开本页，点击上方蓝色按钮。</span></div>
+        <div class="step" role="listitem"><span class="step-number" aria-hidden="true">1</span><span>用 iPhone 自带的 Safari 打开本页，点击上方蓝色按钮。</span></div>
         <div class="step" role="listitem"><span class="step-number" aria-hidden="true">2</span><span>最新版打开后，点击 Safari 底部的“分享”按钮。</span></div>
-        <div class="step" role="listitem"><span class="step-number" aria-hidden="true">3</span><span>选择“添加到主屏幕”，再点击右上角“添加”。</span></div>
+        <div class="step" role="listitem"><span class="step-number" aria-hidden="true">3</span><span>选择“添加到主屏幕”，再点击右上角“添加”，桌面才会出现图标。</span></div>
       </div>
 
       <p class="note">这是无需开发者账号的 Web Clip，不会覆盖你已安装的 IPA 软件。</p>
@@ -189,6 +189,7 @@
           && !/(CriOS|FxiOS|EdgiOS|OPiOS|GSA|FBAN|FBAV|MicroMessenger|Lark|Feishu)/i.test(userAgent);
         const browserNotice = document.getElementById("browserNotice");
         const installButton = document.getElementById("installButton");
+        const profileButton = document.getElementById("profileButton");
         const installStatus = document.getElementById("installStatus");
 
         if (!isIOS) {
@@ -204,6 +205,10 @@
           window.setTimeout(() => {
             installStatus.textContent = "如果没有跳转，请确认本页是在 Safari 中打开。";
           }, 1800);
+        });
+
+        profileButton.addEventListener("click", () => {
+          installStatus.textContent = "描述文件下载后不会自动出现图标，还需要打开“设置”中的“已下载描述文件”并完成安装。";
         });
       })();
     </script>
