@@ -166,14 +166,14 @@
 
       <p class="notice" id="browserNotice" role="status" hidden></p>
 
-      <a class="button button-primary" id="installButton" href="./lingmao-2.0.21.mobileconfig">下载并安装到桌面</a>
-      <a class="button button-secondary" href="../latest/">先打开最新版</a>
+      <a class="button button-primary" id="installButton" href="../latest/">打开最新版并添加到桌面</a>
+      <a class="button button-secondary" href="./lingmao-2.0.21.mobileconfig">使用描述文件安装</a>
       <p class="status" id="installStatus" aria-live="polite"></p>
 
       <div class="steps" role="list" aria-label="安装步骤">
         <div class="step" role="listitem"><span class="step-number" aria-hidden="true">1</span><span>使用 iPhone 自带的 Safari 打开本页，点击上方蓝色按钮。</span></div>
-        <div class="step" role="listitem"><span class="step-number" aria-hidden="true">2</span><span>系统提示描述文件已下载后，打开“设置”里的“已下载描述文件”。</span></div>
-        <div class="step" role="listitem"><span class="step-number" aria-hidden="true">3</span><span>点击“安装”，桌面会出现“灵猫 2.0”图标。</span></div>
+        <div class="step" role="listitem"><span class="step-number" aria-hidden="true">2</span><span>最新版打开后，点击 Safari 底部的“分享”按钮。</span></div>
+        <div class="step" role="listitem"><span class="step-number" aria-hidden="true">3</span><span>选择“添加到主屏幕”，再点击右上角“添加”。</span></div>
       </div>
 
       <p class="note">这是无需开发者账号的 Web Clip，不会覆盖你已安装的 IPA 软件。</p>
@@ -200,9 +200,9 @@
         }
 
         installButton.addEventListener("click", () => {
-          installStatus.textContent = "正在请求 iPhone 下载 Web Clip 描述文件…";
+          installStatus.textContent = "正在打开最新版，打开后请使用 Safari 的“添加到主屏幕”。";
           window.setTimeout(() => {
-            installStatus.textContent = "下载后请进入“设置”中的“已下载描述文件”完成安装。";
+            installStatus.textContent = "如果没有跳转，请确认本页是在 Safari 中打开。";
           }, 1800);
         });
       })();
