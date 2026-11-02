@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f5f6f8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="apple-touch-icon" sizes="192x192" href="../preview-2.0.21/icons/Icon-192.png" />
+    <title>安装灵猫 2.0 Web Clip</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Microsoft YaHei", sans-serif;
+        color: #1f2329;
+        background: #f5f6f8;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        padding: max(28px, env(safe-area-inset-top)) 18px max(28px, env(safe-area-inset-bottom));
+        display: grid;
+        place-items: center;
+        background: #f5f6f8;
+      }
+
+      main {
+        width: min(100%, 420px);
+        padding: 32px 26px 26px;
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        box-shadow: 0 12px 36px rgba(31, 35, 41, 0.08);
+      }
+
+      header { text-align: center; }
+
+      .app-icon {
+        width: 84px;
+        height: 84px;
+        display: block;
+        margin: 0 auto 18px;
+        border-radius: 18px;
+        box-shadow: 0 8px 24px rgba(51, 112, 255, 0.16);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 25px;
+        line-height: 1.35;
+        letter-spacing: 0;
+      }
+
+      .version {
+        margin: 8px 0 0;
+        color: #646a73;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .notice {
+        margin: 22px 0 0;
+        padding: 11px 13px;
+        border: 1px solid #d9e4ff;
+        border-radius: 6px;
+        background: #f4f7ff;
+        color: #245bdb;
+        font-size: 13px;
+        line-height: 1.6;
+        text-align: center;
+      }
+
+      .notice[hidden] { display: none; }
+
+      .button {
+        width: 100%;
+        min-height: 52px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: 0;
+        text-decoration: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .button-primary {
+        margin-top: 26px;
+        background: #3370ff;
+        color: #ffffff;
+      }
+
+      .button-primary:active { background: #245bdb; }
+
+      .button-secondary {
+        margin-top: 10px;
+        border: 1px solid #dfe3e8;
+        background: #ffffff;
+        color: #245bdb;
+      }
+
+      .status {
+        min-height: 21px;
+        margin: 9px 0 0;
+        color: #8f959e;
+        font-size: 12px;
+        line-height: 1.6;
+        text-align: center;
+      }
+
+      .steps {
+        margin-top: 22px;
+        padding-top: 22px;
+        display: grid;
+        gap: 14px;
+        border-top: 1px solid #edf0f3;
+      }
+
+      .step {
+        display: grid;
+        grid-template-columns: 25px minmax(0, 1fr);
+        gap: 11px;
+        align-items: start;
+        color: #4e5969;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .step-number {
+        width: 25px;
+        height: 25px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #eaf0ff;
+        color: #245bdb;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .note {
+        margin: 20px 0 0;
+        color: #8f959e;
+        font-size: 12px;
+        line-height: 1.6;
+        text-align: center;
+      }
+
+      @media (max-width: 390px) {
+        body { padding-inline: 14px; }
+        main { padding: 28px 21px 23px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <img class="app-icon" src="../preview-2.0.21/icons/Icon-192.png" alt="灵猫 2.0 图标" width="84" height="84" />
+        <h1>灵猫 2.0 Web Clip</h1>
+        <p class="version">最新版 2.0.21 · 与截图中的新版首页一致</p>
+      </header>
+
+      <p class="notice" id="browserNotice" role="status" hidden></p>
+
+      <a class="button button-primary" id="installButton" href="./lingmao-2.0.21.mobileconfig">下载并安装到桌面</a>
+      <a class="button button-secondary" href="../latest/">先打开最新版</a>
+      <p class="status" id="installStatus" aria-live="polite"></p>
+
+      <div class="steps" role="list" aria-label="安装步骤">
+        <div class="step" role="listitem"><span class="step-number" aria-hidden="true">1</span><span>使用 iPhone 自带的 Safari 打开本页，点击上方蓝色按钮。</span></div>
+        <div class="step" role="listitem"><span class="step-number" aria-hidden="true">2</span><span>系统提示描述文件已下载后，打开“设置”里的“已下载描述文件”。</span></div>
+        <div class="step" role="listitem"><span class="step-number" aria-hidden="true">3</span><span>点击“安装”，桌面会出现“灵猫 2.0”图标。</span></div>
+      </div>
+
+      <p class="note">这是无需开发者账号的 Web Clip，不会覆盖你已安装的 IPA 软件。</p>
+    </main>
+
+    <script>
+      (() => {
+        const userAgent = navigator.userAgent;
+        const isIOS = /iPhone|iPad|iPod/i.test(userAgent)
+          || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+        const isSafari = isIOS
+          && /Safari/i.test(userAgent)
+          && !/(CriOS|FxiOS|EdgiOS|OPiOS|GSA|FBAN|FBAV|MicroMessenger|Lark|Feishu)/i.test(userAgent);
+        const browserNotice = document.getElementById("browserNotice");
+        const installButton = document.getElementById("installButton");
+        const installStatus = document.getElementById("installStatus");
+
+        if (!isIOS) {
+          browserNotice.hidden = false;
+          browserNotice.textContent = "请把本页链接发到 iPhone，并使用 Safari 打开。";
+        } else if (!isSafari) {
+          browserNotice.hidden = false;
+          browserNotice.textContent = "请点右上角菜单，选择“在 Safari 中打开”后再安装。";
+        }
+
+        installButton.addEventListener("click", () => {
+          installStatus.textContent = "正在请求 iPhone 下载 Web Clip 描述文件…";
+          window.setTimeout(() => {
+            installStatus.textContent = "下载后请进入“设置”中的“已下载描述文件”完成安装。";
+          }, 1800);
+        });
+      })();
+    </script>
+  </body>
+</html>
