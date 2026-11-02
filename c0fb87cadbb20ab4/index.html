@@ -36,6 +36,20 @@
 
       .app-head { text-align: center; }
 
+      .browser-notice {
+        margin: 0 0 22px;
+        padding: 12px 14px;
+        border: 1px solid #f1d29a;
+        border-radius: 6px;
+        background: #fff9ec;
+        color: #75501b;
+        font-size: 14px;
+        line-height: 1.6;
+        text-align: center;
+      }
+
+      .browser-notice[hidden] { display: none; }
+
       .app-icon {
         width: 82px;
         height: 82px;
@@ -77,6 +91,15 @@
       }
 
       .install-button:active { background: #1856ba; }
+
+      .install-status {
+        min-height: 22px;
+        margin: 10px 0 0;
+        color: #657086;
+        font-size: 13px;
+        line-height: 1.6;
+        text-align: center;
+      }
 
       .steps {
         margin: 28px 0 0;
@@ -125,13 +148,16 @@
   </head>
   <body>
     <main>
+      <p class="browser-notice" id="browserNotice" role="status" hidden></p>
+
       <header class="app-head">
         <img class="app-icon" src="./icon512.png" alt="灵猫 2.0 图标" width="82" height="82" />
         <h1>灵猫 2.0（苹果版）</h1>
         <p class="version">版本 2.0.21 · 构建 2221</p>
       </header>
 
-      <a class="install-button" href="itms-services://?action=download-manifest&amp;url=https://yuanyuanlinmo.github.io/lingmao-ios/c0fb87cadbb20ab4/manifest.plist">安装</a>
+      <a class="install-button" id="installButton" href="itms-services://?action=download-manifest&amp;url=https://yuanyuanlinmo.github.io/lingmao-ios/c0fb87cadbb20ab4/manifest.xml">安装</a>
+      <p class="install-status" id="installStatus" aria-live="polite"></p>
 
       <div class="steps" role="list" aria-label="安装步骤">
         <div class="step" role="listitem"><span class="step-number" aria-hidden="true">1</span><span>请用 iPhone 自带的 Safari 打开本页。</span></div>
@@ -141,5 +167,37 @@
 
       <p class="note">仅已登记的 iPhone 可以安装此版本。</p>
     </main>
+
+    <script>
+      (() => {
+        const userAgent = navigator.userAgent;
+        const isIOS = /iPhone|iPad|iPod/i.test(userAgent)
+          || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+        const isSafari = isIOS
+          && /Safari/i.test(userAgent)
+          && !/(CriOS|FxiOS|EdgiOS|OPiOS|GSA|FBAN|FBAV|MicroMessenger|Lark|Feishu)/i.test(userAgent);
+        const browserNotice = document.getElementById("browserNotice");
+        const installButton = document.getElementById("installButton");
+        const installStatus = document.getElementById("installStatus");
+
+        if (!isIOS) {
+          browserNotice.hidden = false;
+          browserNotice.textContent = "请在已登记的 iPhone 上使用 Safari 打开本页。";
+        } else if (!isSafari) {
+          browserNotice.hidden = false;
+          browserNotice.textContent = "当前可能不是 Safari。请点右上角菜单，选择“在 Safari 中打开”后再安装。";
+        }
+
+        installButton.addEventListener("click", () => {
+          installButton.textContent = "正在调起安装...";
+          installStatus.textContent = "正在请求 iPhone 打开系统安装确认。";
+
+          window.setTimeout(() => {
+            installButton.textContent = "再次安装";
+            installStatus.textContent = "如果没有出现系统确认框，请确认本页是在 Safari 中打开。";
+          }, 2500);
+        });
+      })();
+    </script>
   </body>
 </html>
